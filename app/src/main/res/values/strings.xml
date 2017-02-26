@@ -1,0 +1,25 @@
+<resources>
+    <string-array name="user_tab_title">
+        <item>My Info</item>
+        <item>My Ideas</item>
+        <item>Saved Ideas</item>
+    </string-array>
+    <string name="app_name">SVCE</string>
+    <string name="sign_up_text">sign up</string>
+    <string name="log_in_text">log in</string>
+    <string name="back_text">back</string>
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="confirm_password_text">Confirm password</string>
+    <string name="email_text">Email@sjsu.edu</string>
+    <string name="Phone_number_text">Phone number</string>
+    <string name="title_activity_user">UserActivity</string>
+
+    <!--test trings-->
+    <string name="title">Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis; At hoc in eo M.</string>
+    <string name="date">Feb 01, 2017</string>
+    <string name="type">Business</string>
+    <string name="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete.</string>
+    <string name="like">100</string>
+    <string name="comments">comments</string>
+</resources>

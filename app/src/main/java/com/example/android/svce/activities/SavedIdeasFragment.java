@@ -17,8 +17,8 @@ public class SavedIdeasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View roottView =  inflater.inflate(R.layout.my_saved_ideas_fragment, container, false);
+        View rootView =  inflater.inflate(R.layout.my_saved_ideas_fragment, container, false);
 
-        return roottView;
+        return rootView;
     }
 }

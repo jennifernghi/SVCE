@@ -3,6 +3,7 @@ package com.example.android.svce.activities;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,14 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
+        FloatingActionButton addIdeas = (FloatingActionButton) findViewById(R.id.add);
+        addIdeas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, AddNewIdea.class));
+
+            }
+        });
         LinearLayout layout = (LinearLayout) findViewById(R.id.ideas_item_container);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override

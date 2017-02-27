@@ -22,6 +22,10 @@
     <string name="my_ideas">My Ideas</string>
     <string name="my_saved_ideas">My Saved Ideas</string>
     <string name="account_setting">Account Setting</string>
+    <string name="ideas_title">Title</string>
+    <string name="ideas_content">Content</string>
+    <string name="close">close</string>
+    <string name="save">save</string>
 
     <!--test trings-->
     <string name="title">Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis; At hoc in eo M.</string>

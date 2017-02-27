@@ -25,7 +25,9 @@
         <activity android:name=".activities.MyInfoActivity" />
         <activity android:name=".activities.MyIdeasActivity" />
         <activity android:name=".activities.MySavedIdeasActivity" />
-        <activity android:name=".activities.IdeaDetailsActivity"></activity>
+        <activity android:name=".activities.IdeaDetailsActivity" />
+        <activity android:name=".activities.AddNewIdea"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

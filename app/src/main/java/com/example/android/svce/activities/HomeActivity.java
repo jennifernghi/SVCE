@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.android.svce.R;
+
+import static com.example.android.svce.R.drawable.user;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,6 +24,13 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
+        LinearLayout layout = (LinearLayout) findViewById(R.id.ideas_item_container);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, IdeaDetailsActivity.class));
+            }
+        });
         ImageView user = (ImageView) findViewById(R.id.user_button);
         user.setOnClickListener(new View.OnClickListener() {
             @Override

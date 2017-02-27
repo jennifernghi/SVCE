@@ -8,7 +8,8 @@
     android:orientation="vertical"
     android:layout_marginTop="@dimen/eight_dp"
     android:layout_marginStart="@dimen/eight_dp"
-    android:layout_marginEnd="@dimen/eight_dp">
+    android:layout_marginEnd="@dimen/eight_dp"
+    android:background="@color/white">
 
     <!--first row: title of idea-->
     <TextView

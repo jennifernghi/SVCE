@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.svce.activities.HomeActivity">
+    tools:context="com.example.android.svce.activities.UserActivity"
+    android:background="@color/white">
 
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <android.support.design.widget.TabLayout
+        <!--<android.support.design.widget.TabLayout
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +25,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/eight_dp"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"/>-->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:layout_marginStart="@dimen/eight_dp"
+            android:layout_marginEnd="@dimen/eight_dp">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/account_setting"
+                android:textColor="@color/active_icon"
+                android:layout_marginBottom="@dimen/eight_dp"/>
+
+            <TextView
+                android:id="@+id/my_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/my_info"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/eight_dp"/>
+
+            <TextView
+                android:id="@+id/my_ideas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/my_ideas"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/eight_dp"/>
+
+            <TextView
+                android:id="@+id/my_saved_ideas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/my_saved_ideas"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/eight_dp"/>
+
+        </LinearLayout>
+
         <!--control buttons-->
         <LinearLayout
             android:id="@+id/control_container"

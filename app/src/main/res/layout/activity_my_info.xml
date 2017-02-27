@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.svce.activities.MyInfoActivity"
+    android:layout_marginStart="@dimen/eight_dp"
+    android:layout_marginEnd="@dimen/eight_dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/username_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/eight_dp"
+        android:layout_marginBottom="@dimen/eight_dp"
+        android:orientation="vertical">
+        <!--show icon and string "username"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/eight_dp"
+            android:layout_marginBottom="@dimen/eight_dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/avarta"
+                android:layout_marginEnd="@dimen/eight_dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username_text"
+                android:textColor="@color/active_icon"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!--show username-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_string"
+                android:layout_marginStart="30dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                />
+             <EditText
+                 android:id="@+id/username_edit"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:hint="@string/new_username"
+                 android:layout_marginStart="30dp"
+                 android:layout_marginTop="@dimen/eight_dp"
+                 android:textSize="14sp"
+                 android:visibility="gone"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--show icon and string "email"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/eight_dp"
+            android:layout_marginTop="@dimen/eight_dp"
+           >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/email"
+                android:layout_marginEnd="@dimen/eight_dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/active_icon"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!--show email-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_string"
+                    android:layout_marginStart="30dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    />
+                <EditText
+                    android:id="@+id/email_edit"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email_text"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="@dimen/eight_dp"
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--show icon and string "phone number"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/eight_dp"
+            android:layout_marginTop="@dimen/eight_dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/phone"
+                android:layout_marginEnd="@dimen/eight_dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Phone_number_text"
+                android:textColor="@color/active_icon"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!--show phone number-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_string"
+                    android:layout_marginStart="30dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    />
+                <EditText
+                    android:id="@+id/phone_number_edit"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_number_hint"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="@dimen/eight_dp"
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--show icon and string "Password"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/eight_dp"
+            android:layout_marginTop="@dimen/eight_dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/password"
+                android:layout_marginEnd="@dimen/eight_dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_text"
+                android:textColor="@color/active_icon"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <!--show phone number-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/password_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pass_string"
+                    android:layout_marginStart="30dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    />
+                <EditText
+                    android:id="@+id/password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pass_string"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="@dimen/eight_dp"
+                    android:textSize="14sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

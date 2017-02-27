@@ -1,8 +1,6 @@
 package com.example.android.svce.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,27 +8,42 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.svce.R;
-import com.example.android.svce.adapters.ViewPagerAdapter;
 
 public class UserActivity extends AppCompatActivity {
 
-    private ViewPagerAdapter adapter;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_user);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        adapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(adapter);
-        tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        TextView userInfo = (TextView) findViewById(R.id.my_info);
+        userInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserActivity.this, MyInfoActivity.class));
+            }
+        });
+
+        TextView myIdeas = (TextView) findViewById(R.id.my_ideas);
+        myIdeas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserActivity.this, MyIdeasActivity.class));
+            }
+        });
+
+        TextView mySavedIdeas = (TextView) findViewById(R.id.my_saved_ideas);
+        mySavedIdeas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserActivity.this, MySavedIdeasActivity.class));
+            }
+        });
 
         ImageView home = (ImageView) findViewById(R.id.list_button);
         home.setOnClickListener(new View.OnClickListener() {

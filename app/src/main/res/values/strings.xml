@@ -1,8 +1,9 @@
 <resources>
-    <string-array name="user_tab_title">
-        <item>My Info</item>
-        <item>My Ideas</item>
-        <item>Saved Ideas</item>
+
+    <string-array name="category">
+        <item>Business</item>
+        <item>Technology</item>
+        <item>Ideas</item>
     </string-array>
     <string name="app_name">IdeaHub</string>
     <string name="sign_up_text">sign up</string>
@@ -26,6 +27,7 @@
     <string name="ideas_content">Content</string>
     <string name="close">close</string>
     <string name="save">save</string>
+    <string name="category">Category</string>
 
     <!--test trings-->
     <string name="title">Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis; At hoc in eo M.</string>

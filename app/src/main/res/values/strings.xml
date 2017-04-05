@@ -43,4 +43,12 @@
     <string name="author_string">\u0040 johndoe</string>
     <string name="phone_string">(408) \- 123 \- 4567</string>
     <string name="comment_string">this is a comment...</string>
+    <string name="message">message showing here</string>
+
+    <!--error messages-->
+    <string name="url_null">urlString null</string>
+    <string name="input_stream_reader_null">inputStreamReader null</string>
+    <string name="buffer_reader_null">buffer reader null</string>
+    <string name="inputstream_null">inputstream null</string>
+    <string name="string_null"> null</string>
 </resources>

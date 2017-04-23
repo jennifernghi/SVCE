@@ -24,14 +24,14 @@ public class IdeasItemViewModel {
     }
 
     public Context getContext(){
-        return this.getContext();
+        return this.context;
     }
     public String getTitle(){
         return this.ideas.getTitle();
     }
 
     public String getAuthor(){
-        return this.ideas.getAuthor();
+        return "@ "+ this.ideas.getAuthor();
     }
 
     public String getContent(){
@@ -43,7 +43,7 @@ public class IdeasItemViewModel {
     }
 
     public String getVote(){
-        return String.valueOf(this.ideas.getVote());
+        return String.valueOf(this.ideas.getLikes());
     }
 
     public String getCategory(){

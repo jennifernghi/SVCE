@@ -9,4 +9,5 @@
     <color name="inactive_icon">#7f8c8d</color>
     <color name="light_gray">#f7f7f7</color>
     <color name="dark_gray">#707070</color>
+    <color name="google_color">#af3c46</color>
 </resources>

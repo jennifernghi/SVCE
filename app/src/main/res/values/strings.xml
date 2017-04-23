@@ -28,6 +28,8 @@
     <string name="close">close</string>
     <string name="save">save</string>
     <string name="category">Category</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="google_log_out">Logout</string>
 
     <!--test trings-->
     <string name="title">Quodsi vultum tibi, si incessum fingeres, quo gravior viderere, non esses tui similis; At hoc in eo M.</string>

@@ -7,39 +7,35 @@
             name="LoginViewModel"
             type="com.example.android.svce.model.viewModel.LoginViewModel"/>
     </data>
-<LinearLayout
+<RelativeLayout
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context="com.example.android.svce.activities.Login">
+    android:background="@drawable/sjsu"
+    tools:context="com.example.android.svce.activities.Login"
+    android:gravity="center_vertical">
 
-    <LinearLayout
-        android:id="@+id/login_container"
+    <ImageView
+        android:id="@+id/backgroung"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
-        android:orientation="vertical"
-        android:padding="@dimen/login_side"
-        android:gravity="center_vertical|center">
+        android:layout_height="match_parent"
+        android:background="@drawable/sjsu"
+        android:scaleType="centerCrop"/>
 
-        <EditText
-            android:id="@+id/username_edittext"
+        <Button
+            android:id="@+id/google_button"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            style="@style/edit_text_style"
-            android:hint="@string/username_text"
-            android:layout_marginBottom="@dimen/four_dp"/>
-        <EditText
-            android:id="@+id/password_edittext"
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            style="@style/edit_text_style"
-            android:hint="@string/password_text"/>
+            android:background="@color/google_color"
+            android:textColor="@color/white"
+            android:textStyle="bold"
 
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/google_sign_in"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/sixteen_dp"
+            android:layout_marginEnd="@dimen/sixteen_dp"
+           />
+
     <LinearLayout
         android:id="@+id/emptyview"
         android:visibility="gone"
@@ -60,34 +56,6 @@
             android:paddingLeft="@dimen/four_dp"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/button_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.08"
-        android:orientation="horizontal"
-        android:background="@color/black">
 
-        <Button
-            android:id="@+id/signup_button"
-            style="@style/login_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/two_dp"
-            android:layout_marginStart="@dimen/four_dp"
-            android:layout_weight="0.5"
-            android:text="@string/sign_up_text" />
-
-        <Button
-            android:id="@+id/login_button"
-            style="@style/login_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/four_dp"
-            android:layout_marginStart="@dimen/two_dp"
-            android:layout_weight="0.5"
-            android:text="@string/log_in_text" />
-
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
 </layout>

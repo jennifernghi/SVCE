@@ -24,4 +24,6 @@ public class IdeasViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+
+
 }

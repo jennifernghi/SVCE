@@ -43,6 +43,10 @@ public class IdeasAdapter extends RecyclerView.Adapter<IdeasViewHolder> {
         return ideas.size();
     }
 
+    public  void setLoadedIdeas(ArrayList<Ideas> data){
+        ideas = data;
+        notifyDataSetChanged();;
+    }
 
 
 }

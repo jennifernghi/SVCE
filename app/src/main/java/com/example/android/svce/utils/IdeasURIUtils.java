@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.example.android.svce.R;
+import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
 
 import org.json.JSONArray;
@@ -19,24 +20,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+
+import static com.example.android.svce.R.drawable.phone;
 
 /**
  * Created by jennifernghinguyen on 4/4/17.
  */
 
-public final class UserURIUtils {
-     static final String LOG_TAG = UserURIUtils.class.getSimpleName();
-     static final String APIKEY= "77JGJS73JZ9EU3B1JEJC";
+public final class IdeasURIUtils {
+     static final String LOG_TAG = IdeasURIUtils.class.getSimpleName();
+
      static Context ct;
 
     /**
      * build valid url from host , username query, password query
      * @param context - UI context
-     * @param username - username query
+     * @param sort - sort query
      * @return String - urlString
      *
      */
-    public static String buildUserUrl(Context context, String host, String username){
+  
+
+    public static String buildUserUrl(Context context, String host, String sort, String startIndex, String endIndex){
         ct=context;
         String urlString = null;
         if(host == null){
@@ -45,9 +51,12 @@ public final class UserURIUtils {
 
         Uri base = Uri.parse(host);
         Uri.Builder builder = base.buildUpon();
-        builder.appendEncodedPath(Constant.USERPATH +"/");
-        builder.appendQueryParameter(Constant.KEY_QUERY, APIKEY);
-        builder.appendQueryParameter(Constant.USERNAME_QUERY, username);
+        builder.appendEncodedPath(Constant.IDEA_PATH +"/");
+        builder.appendQueryParameter(Constant.SORT_QUERY, sort);
+        if(!startIndex.equals("")&& (!endIndex.equals(""))) {
+            builder.appendQueryParameter(Constant.START_INDEX_QUERY, startIndex);
+            builder.appendQueryParameter(Constant.END_INDEX_QUERY, endIndex);
+        }
         urlString = builder.toString();
         Log.i(LOG_TAG, urlString);
         return urlString;
@@ -60,7 +69,7 @@ public final class UserURIUtils {
      * @param urlString
      * @return URL object
      */
-    private static URL createURL(String urlString){
+   private static URL createURL(String urlString){
         URL url = null;
         if(urlString == null){
             return null;
@@ -145,20 +154,27 @@ public final class UserURIUtils {
     /**
      * extract user info from json response
      */
-    private static User extractUser(String response){
-        User user = null;
+    private static ArrayList<Ideas> extractIdea(String response){
+        ArrayList<Ideas> ideas = new ArrayList<>();
 
         try {
             JSONArray root = new JSONArray(response);
-            if(root.length()==1){
-                JSONObject userObject = (JSONObject) root.get(0);
-                String userame = getString(userObject, "username");
-                String password = getString(userObject, "password");
-                String email = getString(userObject, "email");
-                String phone = getString(userObject, "phone");
+            for(int i =0; i<root.length(); i++) {
+                if(i<=10) {
+                    JSONObject userObject = (JSONObject) root.get(i);
+                    int ideasId = userObject.getInt("ideaId");
+                    String title = getString(userObject, "title");
+                    String content = getString(userObject, "content");
+                    String date = getString(userObject, "date");
+                    String category = getString(userObject, "category");
+                    int likes = userObject.getInt("likes");
+                    String author = getString(userObject, "author");
 
-                if(userame!=null && password!=null && email!=null&&phone!=null){
-                    user = new User(userame,email,phone,password);
+                    if (title != null && content != null && date != null && author != null && category != null) {
+                        ideas.add(new Ideas(ideasId, title, content, date, category, likes, author));
+                    }
+                }else{
+                    break;
                 }
             }
 
@@ -167,7 +183,7 @@ public final class UserURIUtils {
             e.printStackTrace();
         }
 
-        return user;
+        return ideas;
     }
 
     /**
@@ -189,8 +205,9 @@ public final class UserURIUtils {
         return str;
     }
 
-    public static User fetchData(String urlString){
-        User user = null;
+
+    public static ArrayList<Ideas> fetchData(String urlString){
+        ArrayList<Ideas> ideas = new ArrayList<>();
         URL url = createURL(urlString);
 
         String response = "";
@@ -202,9 +219,10 @@ public final class UserURIUtils {
         }
 
         if(!response.equals("")){
-            user = extractUser(response);
+            ideas = extractIdea(response);
         }
 
-        return user;
+        return ideas;
     }
+
 }

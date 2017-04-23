@@ -1,23 +1,27 @@
 package com.example.android.svce.model.POJO;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.Serializable;
+
 /**
  * Created by jennifernghinguyen on 2/27/17.
  */
 
-public class User {
+public class User implements Serializable {
     private String username;
     private String email;
-    private String phoneNumber;
-    private String password;
+    private String userThumbnail;
+
 
     public User(String username,
                 String email,
-                String phoneNumber,
-                String password){
+                String password
+               ){
         this.username = username;
         this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
+        this.userThumbnail = password;
+
     }
 
     public String getUsername(){
@@ -28,15 +32,9 @@ public class User {
         return this.email;
     }
 
-    public String getPhoneNumber(){
-        return this.phoneNumber;
+    public String getUserThumbnail(){
+        return this.userThumbnail;
     }
 
-    public int getPasswordLength(){
-        return this.password.length();
-    }
 
-    public String getPassword(){
-        return this.password;
-    }
 }

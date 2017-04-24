@@ -80,7 +80,9 @@ public class IdeaDetailViewModel {
         return this.idea.getCategory();
     }
 
-
+    public RecyclerView getCommentList(){
+        return this.binding.commentList;
+    }
 
 
 }

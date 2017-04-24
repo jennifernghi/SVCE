@@ -79,7 +79,7 @@
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{myInfoModel.userUsername}"
+                android:text="@{myInfoModel.userEmail}"
                 android:layout_marginStart="30dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"
@@ -125,7 +125,7 @@
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{myInfoModel.userUsername}"
+
                     android:layout_marginStart="30dp"
                     android:textColor="@color/black"
                     android:textSize="14sp"

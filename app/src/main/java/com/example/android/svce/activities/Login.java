@@ -101,10 +101,10 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     private void handleResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
-            String username = account.getDisplayName();
+            //String username = account.getDisplayName();
             String email = account.getEmail();
             String thumbnail = account.getPhotoUrl().toString();
-            User user = new User(username, email, thumbnail);
+            User user = new User(email, thumbnail);
             HomeActivity.startIntent(this, user);
         }
     }

@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="@{HomeActivityViewModel.userUsername}"
+            android:text="@{HomeActivityViewModel.userEmail}"
             android:layout_marginStart="@dimen/eight_dp"
             android:layout_marginEnd="@dimen/eight_dp"
             android:textColor="@color/black"
@@ -150,8 +150,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-
-                android:src="@drawable/add"
+                android:onClick="@{HomeActivityViewModel::addIdea}"
+                android:src="@drawable/plus"
                 app:backgroundTint="@color/colorPrimary"
                 app:fabSize="normal" />
             </RelativeLayout>

@@ -26,9 +26,9 @@ public class MyInfoModel {
         this.user = user;
     }
 
-    public String getUserUsername() {
+    /*public String getUserUsername() {
         return this.user.getUsername();
-    }
+    }*/
 
     public String getUserEmail() {
         return this.user.getEmail();

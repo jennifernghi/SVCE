@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="AddIdeaViewModel"
+            type="com.example.android.svce.model.viewModel.AddIdeaViewModel" />
+    </data>
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_add_new_idea"
     android:layout_width="match_parent"
@@ -23,12 +30,13 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginTop="@dimen/eight_dp"
             android:background="@drawable/gray_border"
             android:gravity="top"
             android:padding="@dimen/four_dp"
-            android:layout_marginTop="@dimen/eight_dp"
             android:textSize="14sp" />
 
         <TextView
@@ -100,3 +108,4 @@
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
+</layout>

@@ -7,6 +7,7 @@ import com.example.android.svce.activities.HomeActivity;
 import com.example.android.svce.activities.IdeaDetailsActivity;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
+import com.example.android.svce.utils.StringUtils;
 
 import static com.example.android.svce.R.drawable.user;
 
@@ -37,7 +38,7 @@ public class IdeasItemViewModel{
         return this.user;
     }
     public String getAuthor(){
-        return "@ "+ this.ideas.getAuthor();
+        return "@ " + StringUtils.trimEmailPart(this.ideas.getAuthor());
     }
 
     public Ideas getIdea(){return this.ideas;}

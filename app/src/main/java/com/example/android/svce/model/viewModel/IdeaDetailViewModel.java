@@ -11,6 +11,7 @@ import com.example.android.svce.databinding.ActivityHomeBinding;
 import com.example.android.svce.databinding.ActivityIdeaDetailsBinding;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
+import com.example.android.svce.utils.StringUtils;
 
 /**
  * Created by jennifernghinguyen on 4/23/17.
@@ -31,12 +32,12 @@ public class IdeaDetailViewModel {
     }
 
 
-    public String getUserUsername() {
+    /*public String getUserUsername() {
         return this.user.getUsername();
-    }
+    }*/
 
     public String getUserEmail() {
-        return this.user.getEmail();
+        return StringUtils.trimEmailPart( this.user.getEmail());
     }
 
     public String getUserThumbnail() {
@@ -61,7 +62,7 @@ public class IdeaDetailViewModel {
     }
 
     public String getAuthor(){
-        return "@ "+ this.idea.getAuthor();
+        return "@ " + StringUtils.trimEmailPart(this.idea.getAuthor());
     }
 
     public String getContent(){

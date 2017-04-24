@@ -1,9 +1,16 @@
 <resources>
 
     <string-array name="category">
-        <item>Business</item>
+        <item>Local Start-ups</item>
+        <item>Mobile App development</item>
+        <item>Web development</item>
+        <item>Software</item>
+        <item>College Activities</item>
+        <item>Club</item>
         <item>Technology</item>
-        <item>Ideas</item>
+        <item>Game</item>
+        <item>Side Projects</item>
+        <item>Opportunities</item>
     </string-array>
     <string name="app_name">IdeaHub</string>
     <string name="sign_up_text">sign up</string>

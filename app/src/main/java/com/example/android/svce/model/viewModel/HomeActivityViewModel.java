@@ -3,12 +3,15 @@ package com.example.android.svce.model.viewModel;
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 
+import com.example.android.svce.activities.AddNewIdea;
 import com.example.android.svce.activities.HomeActivity;
 
 import com.example.android.svce.databinding.ActivityHomeBinding;
 import com.example.android.svce.model.POJO.User;
+import com.example.android.svce.utils.StringUtils;
 
 /**
  * Created by jennifernghinguyen on 4/21/17.
@@ -27,12 +30,12 @@ public class HomeActivityViewModel {
     }
 
 
-    public String getUserUsername() {
+    /*public String getUserUsername() {
         return this.user.getUsername();
-    }
+    }*/
 
     public String getUserEmail() {
-        return this.user.getEmail();
+        return StringUtils.trimEmailPart( this.user.getEmail());
     }
 
     public String getUserThumbnail() {
@@ -69,6 +72,10 @@ public class HomeActivityViewModel {
 
     public ImageView getLogoutButton(){
         return binding.logoutButton;
+    }
+
+    public void addIdea(View view){
+        AddNewIdea.startIntent(getContext(), getUser());
     }
 
 }

@@ -4,184 +4,215 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="IdeaDetailViewModel"
-            type="com.example.android.svce.model.viewModel.IdeaDetailViewModel"/>
+            type="com.example.android.svce.model.viewModel.IdeaDetailViewModel" />
     </data>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_gray"
-    tools:context="com.example.android.svce.activities.IdeaDetailsActivity">
 
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/eight_dp"
-        android:layout_marginTop="@dimen/eight_dp"
-        android:background="@color/light_gray"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/eight_dp">
-
-
-
-        <!--details -->
-        <LinearLayout
-            android:id="@+id/detail_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:paddingEnd="@dimen/eight_dp"
-            android:paddingStart="@dimen/eight_dp"
-            android:layout_marginBottom="@dimen/eight_dp">
-
-            <TextView
-                android:id="@+id/ideas_detail_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/eight_dp"
-                android:text="@{IdeaDetailViewModel.title}"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/eight_dp"
-                android:layout_marginStart="@dimen/eight_dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ideas_detail_author"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/sixteen_dp"
-                    android:text="@{IdeaDetailViewModel.author}"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/ideas_detail_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/sixteen_dp"
-                    android:text="@{IdeaDetailViewModel.date}"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/ideas_detail_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/sixteen_dp"
-                    android:text="@{IdeaDetailViewModel.category}"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/ideas_detail_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/eight_dp"
-                android:text="@{IdeaDetailViewModel.content}"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/light_gray"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/eight_dp"
-                android:layout_marginStart="@dimen/eight_dp"
-                android:layout_marginTop="@dimen/eight_dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-
-               <ImageView
-                   android:id="@+id/like_ic"
-                   android:layout_width="20dp"
-                   android:layout_height="20dp"
-                   android:src="@drawable/like"
-                   android:layout_marginEnd="@dimen/sixteen_dp"/>
-
-                <TextView
-                    android:id="@+id/like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{IdeaDetailViewModel.vote}"/>
-
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <!--comments-->
-        <LinearLayout
-            android:id="@+id/comment_container"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:paddingEnd="@dimen/eight_dp"
-            android:paddingStart="@dimen/eight_dp">
+            android:background="@color/light_gray"
+            tools:context="com.example.android.svce.activities.IdeaDetailsActivity">
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/eight_dp"
-                android:paddingBottom="@dimen/eight_dp"
-                android:text="@string/comments"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content">
 
-            <!--comment box-->
-            <LinearLayout
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.7"
-                    android:layout_marginEnd="@dimen/four_dp"
-                    android:hint="@string/comments" />
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/send" />
-            </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/comment_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="40dp"
-                android:scrollbars="vertical" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/eight_dp"
+                    android:layout_marginTop="@dimen/eight_dp"
+                    android:background="@color/light_gray"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/eight_dp">
 
 
+                    <!--details -->
+                    <LinearLayout
+                        android:id="@+id/detail_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/eight_dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingEnd="@dimen/eight_dp"
+                        android:paddingStart="@dimen/eight_dp">
 
-        </LinearLayout>
-    </LinearLayout>
+                        <TextView
+                            android:id="@+id/ideas_detail_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/eight_dp"
+                            android:text="@{IdeaDetailViewModel.title}"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
 
-    </RelativeLayout>
-</ScrollView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/eight_dp"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/ideas_detail_author"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/sixteen_dp"
+                                android:text="@{IdeaDetailViewModel.author}"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/ideas_detail_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/sixteen_dp"
+                                android:text="@{IdeaDetailViewModel.date}"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:id="@+id/ideas_detail_category"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/sixteen_dp"
+                                android:text="@{IdeaDetailViewModel.category}"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="14dp" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/ideas_detail_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/eight_dp"
+                            android:text="@{IdeaDetailViewModel.content}"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/light_gray" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/eight_dp"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:layout_marginTop="@dimen/eight_dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:id="@+id/like_ic"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="@dimen/sixteen_dp"
+                                android:src="@drawable/like" />
+
+                            <TextView
+                                android:id="@+id/like"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{IdeaDetailViewModel.vote}" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <!--comments-->
+                    <LinearLayout
+                        android:id="@+id/comment_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/light_gray"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/eight_dp"
+                                android:layout_marginStart="@dimen/eight_dp"
+                                android:paddingBottom="@dimen/eight_dp"
+                                android:paddingTop="@dimen/eight_dp"
+                                android:text="@string/comments"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <!--comment box-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/eight_dp"
+                                android:layout_marginStart="@dimen/eight_dp"
+                                android:layout_weight="0.7"
+                                android:hint="@string/comments" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/send" />
+                        </LinearLayout>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/comment_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/eight_dp"
+                            android:scrollbars="vertical" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/sixteen_dp"
+            android:paddingEnd="@dimen/sixteen_dp">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+
+            android:src="@drawable/email"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabSize="normal" />
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

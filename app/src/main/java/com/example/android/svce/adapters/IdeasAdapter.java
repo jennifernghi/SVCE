@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.example.android.svce.R;
 import com.example.android.svce.databinding.IdeasItemBinding;
 import com.example.android.svce.model.POJO.Ideas;
+import com.example.android.svce.model.POJO.User;
 
 import java.util.ArrayList;
 
@@ -17,10 +18,11 @@ import java.util.ArrayList;
 
 public class IdeasAdapter extends RecyclerView.Adapter<IdeasViewHolder> {
     private ArrayList<Ideas> ideas = new ArrayList<>();
-
-    public IdeasAdapter(ArrayList<Ideas> data) {
+    private User user;
+    public IdeasAdapter(ArrayList<Ideas> data, User user) {
         super();
         ideas = data;
+        this.user = user;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class IdeasAdapter extends RecyclerView.Adapter<IdeasViewHolder> {
     @Override
     public void onBindViewHolder(IdeasViewHolder holder, final int position) {
         // bind each product with view model: ProductItemViewModel
-        holder.bindConnection(ideas.get(position));
+        holder.bindConnection(ideas.get(position), user);
 
     }
 

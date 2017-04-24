@@ -3,7 +3,7 @@
 <layout  xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <import type="android.view.View" />
         <variable
             name="IdeasItemViewModel"
             type="com.example.android.svce.model.viewModel.IdeasItemViewModel" />
@@ -14,6 +14,7 @@
     android:id="@+id/ideas_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:onClick="@{IdeasItemViewModel::onSelected}"
     android:orientation="vertical"
     android:layout_marginTop="@dimen/eight_dp"
     android:layout_marginStart="@dimen/eight_dp"

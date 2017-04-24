@@ -70,4 +70,5 @@ public class HomeActivityViewModel {
     public ImageView getLogoutButton(){
         return binding.logoutButton;
     }
+
 }

@@ -40,7 +40,7 @@ public final class IdeasURIUtils {
      * @return String - urlString
      *
      */
-  
+
 
     public static String buildUserUrl(Context context, String host, String sort, String startIndex, String endIndex){
         ct=context;

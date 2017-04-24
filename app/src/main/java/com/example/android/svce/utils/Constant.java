@@ -12,6 +12,7 @@ public final class Constant {
     public static final String START_INDEX_QUERY="startIndex";
     public static final String END_INDEX_QUERY="endIndex";
     public final static String USER_INFO="user";
+    public final static String IDEA_INFO="idea";
 
 
 

@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     private String sort = "newest";
     String startIndex = "";
     String endIndex = "";
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private void initializeBinding() {
         xmlBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-        User user = (User) getIntent().getSerializableExtra(Constant.USER_INFO);
+        user = (User) getIntent().getSerializableExtra(Constant.USER_INFO);
         viewModel = new HomeActivityViewModel(this, xmlBinding, user);
         xmlBinding.setHomeActivityViewModel(viewModel);
     }
@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void initializeRecyclerView(RecyclerView recyclerView) {
-        ideasAdapter = new IdeasAdapter(ideas);
+        ideasAdapter = new IdeasAdapter(ideas, user);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(ideasAdapter);
     }

@@ -1,6 +1,8 @@
 package com.example.android.svce.model.viewModel;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -65,6 +67,10 @@ public class IdeaDetailViewModel {
         return "@ " + StringUtils.trimEmailPart(this.idea.getAuthor());
     }
 
+    public String getAuthorEmail(){
+        return this.idea.getAuthor();
+    }
+
     public String getContent(){
         return this.idea.getContent();
     }
@@ -85,5 +91,14 @@ public class IdeaDetailViewModel {
         return this.binding.commentList;
     }
 
+    public void sendEmail(View view){
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {getAuthorEmail()});
+        intent.putExtra(Intent.EXTRA_SUBJECT, getTitle());
+        if(intent.resolveActivity(getContext().getPackageManager()) !=null){
+            getContext().startActivity(intent);
+        }
+    }
 
 }

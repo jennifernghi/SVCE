@@ -1,6 +1,7 @@
 package com.example.android.svce.model.viewModel;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,11 +37,15 @@ public class AddIdeaViewModel {
         return binding.category;
     }
 
-    public TextView getSaveButton(){
+    public FloatingActionButton getSaveButton(){
         return binding.save;
     }
 
     public TextView getCloseButton(){
         return binding.close;
+    }
+
+    public String getAuthor(){
+        return this.user.getEmail();
     }
 }

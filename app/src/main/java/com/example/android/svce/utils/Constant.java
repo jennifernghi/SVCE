@@ -15,7 +15,11 @@ public final class Constant {
     public static final String IDEAID_QUERY="ideaid";
     public final static String USER_INFO="user";
     public final static String IDEA_INFO="idea";
-
-
+    public final static String JSON_TITLE="title";
+    public final static String JSON_CONTENT="content";
+    public final static String JSON_DATE="date";
+    public final static String JSON_category="category";
+    public final static String JSON_LIKES="likes";
+    public final static String JSON_AUTHOR="author";
 
 }

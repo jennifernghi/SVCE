@@ -3,9 +3,8 @@ package com.example.android.svce.model.viewModel;
 import android.content.Context;
 
 import com.example.android.svce.model.POJO.Comment;
-import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
-import com.example.android.svce.utils.StringUtils;
+import com.example.android.svce.utils.Utils;
 
 /**
  * Created by jennifernghinguyen on 4/23/17.
@@ -33,7 +32,7 @@ public class CommentItemViewModel {
     }
 
     public String getAuthor(){
-        return "@ " + StringUtils.trimEmailPart(this.comment.getAuthor());
+        return "@ " + Utils.trimEmailPart(this.comment.getAuthor());
     }
     public String getComment(){
         return this.comment.getComment();

@@ -13,15 +13,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import static android.R.attr.data;
 import static com.example.android.svce.R.drawable.phone;
 
 /**
@@ -57,6 +62,23 @@ public final class IdeasURIUtils {
             builder.appendQueryParameter(Constant.START_INDEX_QUERY, startIndex);
             builder.appendQueryParameter(Constant.END_INDEX_QUERY, endIndex);
         }
+        urlString = builder.toString();
+        Log.i(LOG_TAG, urlString);
+        return urlString;
+
+
+    }
+
+    public static String builIdeaPostUrl(Context context, String host){
+        ct=context;
+        String urlString = null;
+        if(host == null){
+            return urlString;
+        }
+
+        Uri base = Uri.parse(host);
+        Uri.Builder builder = base.buildUpon();
+        builder.appendEncodedPath(Constant.IDEA_PATH);
         urlString = builder.toString();
         Log.i(LOG_TAG, urlString);
         return urlString;
@@ -224,5 +246,64 @@ public final class IdeasURIUtils {
 
         return ideas;
     }
+
+    public static String createJSON(String title, String content, String date, String category, String likes, String author){
+        JSONObject ideaObject = new JSONObject();
+
+        try {
+            ideaObject.put(Constant.JSON_TITLE, title);
+            ideaObject.put(Constant.JSON_CONTENT, content);
+            ideaObject.put(Constant.JSON_DATE, date);
+            ideaObject.put(Constant.JSON_category, category);
+            ideaObject.put(Constant.JSON_LIKES, likes);
+            ideaObject.put(Constant.JSON_AUTHOR, author);
+            Log.i("create json", ideaObject.toString());
+            return ideaObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /*private static String getServerResponse(URL url, String title, String content, String date, String category, String likes, String author) throws IOException{
+        String response = "";
+        if(url == null){
+            return response;
+        }
+
+        //open HTTP connection
+        HttpURLConnection connection = null;
+        InputStream inputStream = null;
+
+        try {
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestMethod("POST");
+            connection.connect();
+
+            DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+            wr.writeBytes(createJSON(title, content, date, category, likes, author));
+            wr.flush();
+            wr.close();
+
+        }finally {
+            //close connection if exist
+            if(connection != null){
+                connection.disconnect();
+            }
+            // close inStream if exist
+            if (inputStream !=null){
+                inputStream.close();
+            }
+        }
+
+
+       // return null;
+    }*/
+
+
 
 }

@@ -19,39 +19,8 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentTop="true"
-        android:gravity="right|center_vertical"
-        android:background="@color/white">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/two_dp"
-            android:layout_marginBottom="@dimen/two_dp"
-            app:thumbnailImageUrl="@{HomeActivityViewModel.userThumbnail}"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/white"/>
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@{HomeActivityViewModel.userEmail}"
-            android:layout_marginStart="@dimen/eight_dp"
-            android:layout_marginEnd="@dimen/eight_dp"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            />
-    </LinearLayout>
+        android:layout_height="match_parent">
 
 
         <LinearLayout
@@ -128,8 +97,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/control_container"
-            android:layout_marginBottom="@dimen/four_dp">
+            android:layout_above="@id/control_container">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/ideas_list"
@@ -137,23 +105,25 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/eight_dp"
                 android:scrollbars="vertical" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/sixteen_dp"
-                android:layout_marginEnd="@dimen/sixteen_dp">
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:onClick="@{HomeActivityViewModel::addIdea}"
-                android:src="@drawable/plus"
-                app:backgroundTint="@color/colorPrimary"
-                app:fabSize="normal" />
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="@dimen/sixteen_dp"
+                    android:layout_marginEnd="@dimen/sixteen_dp"
+                    android:onClick="@{HomeActivityViewModel::addIdea}"
+                    android:src="@drawable/plus"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:fabSize="normal" />
             </RelativeLayout>
 
 

@@ -3,13 +3,10 @@ package com.example.android.svce.model.viewModel;
 import android.content.Context;
 import android.view.View;
 
-import com.example.android.svce.activities.HomeActivity;
 import com.example.android.svce.activities.IdeaDetailsActivity;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
-import com.example.android.svce.utils.StringUtils;
-
-import static com.example.android.svce.R.drawable.user;
+import com.example.android.svce.utils.Utils;
 
 /**
  * Created by jennifernghinguyen on 2/27/17.
@@ -38,7 +35,7 @@ public class IdeasItemViewModel{
         return this.user;
     }
     public String getAuthor(){
-        return "@ " + StringUtils.trimEmailPart(this.ideas.getAuthor());
+        return "@ " + Utils.trimEmailPart(this.ideas.getAuthor());
     }
 
     public Ideas getIdea(){return this.ideas;}

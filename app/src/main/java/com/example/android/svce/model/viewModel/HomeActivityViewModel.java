@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.android.svce.activities.AddNewIdea;
-import com.example.android.svce.activities.HomeActivity;
 
 import com.example.android.svce.databinding.ActivityHomeBinding;
 import com.example.android.svce.model.POJO.User;
-import com.example.android.svce.utils.StringUtils;
+import com.example.android.svce.utils.Utils;
 
 /**
  * Created by jennifernghinguyen on 4/21/17.
@@ -35,7 +34,7 @@ public class HomeActivityViewModel {
     }*/
 
     public String getUserEmail() {
-        return StringUtils.trimEmailPart( this.user.getEmail());
+        return Utils.trimEmailPart( this.user.getEmail());
     }
 
     public String getUserThumbnail() {

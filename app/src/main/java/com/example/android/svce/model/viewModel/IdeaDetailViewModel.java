@@ -3,17 +3,13 @@ package com.example.android.svce.model.viewModel;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.example.android.svce.activities.IdeaDetailsActivity;
-import com.example.android.svce.databinding.ActivityHomeBinding;
 import com.example.android.svce.databinding.ActivityIdeaDetailsBinding;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
-import com.example.android.svce.utils.StringUtils;
+import com.example.android.svce.utils.Utils;
 
 /**
  * Created by jennifernghinguyen on 4/23/17.
@@ -39,7 +35,7 @@ public class IdeaDetailViewModel {
     }*/
 
     public String getUserEmail() {
-        return StringUtils.trimEmailPart( this.user.getEmail());
+        return Utils.trimEmailPart( this.user.getEmail());
     }
 
     public String getUserThumbnail() {
@@ -64,7 +60,7 @@ public class IdeaDetailViewModel {
     }
 
     public String getAuthor(){
-        return "@ " + StringUtils.trimEmailPart(this.idea.getAuthor());
+        return "@ " + Utils.trimEmailPart(this.idea.getAuthor());
     }
 
     public String getAuthorEmail(){

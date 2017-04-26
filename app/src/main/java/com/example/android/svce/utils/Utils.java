@@ -1,6 +1,9 @@
 package com.example.android.svce.utils;
 
 import java.lang.String;
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,8 +18,8 @@ public final class Utils {
     }
 
     public static String getTodayDate(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-        return dateFormat.format(new Date());
+        android.text.format.DateFormat dateFormat = new android.text.format.DateFormat();
+        return dateFormat.format("yyyy-MM-dd", new Date()).toString();
 
     }
 }

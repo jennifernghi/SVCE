@@ -21,6 +21,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import static com.example.android.svce.R.string.date;
+
 /**
  * Created by jennifernghinguyen on 4/23/17.
  */
@@ -51,6 +53,23 @@ public final class CommentURIUtils {
         Uri.Builder builder = base.buildUpon();
         builder.appendEncodedPath(Constant.COMMENT_PATH + "/");
         builder.appendQueryParameter(Constant.IDEAID_QUERY, ideaid);
+        urlString = builder.toString();
+        Log.i(LOG_TAG, urlString);
+        return urlString;
+
+
+    }
+
+    public static String buildCommentPostUrl(Context context, String host) {
+        ct = context;
+        String urlString = null;
+        if (host == null) {
+            return urlString;
+        }
+
+        Uri base = Uri.parse(host);
+        Uri.Builder builder = base.buildUpon();
+        builder.appendEncodedPath(Constant.COMMENT_PATH + "/");
         urlString = builder.toString();
         Log.i(LOG_TAG, urlString);
         return urlString;
@@ -219,4 +238,19 @@ public final class CommentURIUtils {
         return comments;
     }
 
+    public static String createJSON(String comment, String _author, int ideaid){
+        JSONObject ideaObject = new JSONObject();
+
+        try {
+            ideaObject.put(Constant.JSON_COMMENT, comment);
+            ideaObject.put(Constant.JSON_AUTHOR, _author);
+            ideaObject.put(Constant.JSON_IDEAID, ideaid);
+            Log.i("create json", ideaObject.toString());
+            return ideaObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

@@ -21,5 +21,7 @@ public final class Constant {
     public final static String JSON_category="category";
     public final static String JSON_LIKES="likes";
     public final static String JSON_AUTHOR="author";
+    public final static String JSON_COMMENT="comment";
+    public final static String JSON_IDEAID="ideaId";
 
 }

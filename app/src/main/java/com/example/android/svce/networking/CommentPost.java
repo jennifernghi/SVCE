@@ -2,10 +2,10 @@ package com.example.android.svce.networking;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
-import android.util.Base64;
 import android.util.Log;
 
-import com.example.android.svce.model.POJO.Ideas;
+import com.example.android.svce.model.POJO.Comment;
+import com.example.android.svce.utils.CommentURIUtils;
 import com.example.android.svce.utils.Constant;
 import com.example.android.svce.utils.IdeasURIUtils;
 
@@ -14,31 +14,25 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
+
+import static com.example.android.svce.R.string.date;
 
 /**
  * Created by jennifernghinguyen on 4/25/17.
  */
 
-public class IdeasPost extends AsyncTaskLoader<String> {
+public class CommentPost extends AsyncTaskLoader<String> {
     private Context context;
-    private String title;
-    private String content;
-    private String date;
-    private String category;
-    private int likes;
+    private String comment;
+    private int ideaid;
     private String author;
 
 
-    public IdeasPost(Context context, String title, String content, String date, String category, int likes, String author){
+    public CommentPost(Context context, String comment, String author, int ideaid){
         super(context);
         this.context = context;
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.category = category;
-        this.likes = likes;
+        this.comment = comment;
+        this.ideaid = ideaid;
         this.author = author;
     }
     @Override
@@ -46,7 +40,7 @@ public class IdeasPost extends AsyncTaskLoader<String> {
         String response="";
         URL url = null;
         try {
-             url = new URL(IdeasURIUtils.builIdeaPostUrl(context, Constant.HOST) +"/");
+             url = new URL(CommentURIUtils.buildCommentPostUrl(context, Constant.HOST));
             Log.i("post url", url.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -61,11 +55,12 @@ public class IdeasPost extends AsyncTaskLoader<String> {
                 connection.connect();
 
                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-                wr.writeBytes(IdeasURIUtils.createJSON(title, content, date, category, likes, author));
+                wr.writeBytes(CommentURIUtils.createJSON(comment, author, ideaid));
                 wr.flush();
                 wr.close();
+                Log.i("comment post",String.valueOf(connection.getResponseCode()));
+                return String.valueOf(connection.getResponseCode());
 
-                return connection.getResponseMessage() +" "+ connection.getResponseCode();
             } catch (IOException e) {
                 e.printStackTrace();
             }

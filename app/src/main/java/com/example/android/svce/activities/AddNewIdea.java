@@ -97,12 +97,13 @@ public class AddNewIdea extends AppCompatActivity implements LoaderManager.Loade
     }
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return new IdeasPost(getApplicationContext(), gettitle(), getContent(), getDate(), getCategory(), String.valueOf(likes), getAuthor());
+        return new IdeasPost(getApplicationContext(), gettitle(), getContent(), getDate(), getCategory(), likes, getAuthor());
     }
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
         Log.i("post", data);
+        HomeActivity.startIntent(this, user);
     }
 
     @Override

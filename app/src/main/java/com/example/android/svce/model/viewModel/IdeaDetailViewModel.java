@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.android.svce.databinding.ActivityIdeaDetailsBinding;
 import com.example.android.svce.model.POJO.Ideas;
@@ -34,9 +36,9 @@ public class IdeaDetailViewModel {
         return this.user.getUsername();
     }*/
 
-    public String getUserEmail() {
-        return Utils.trimEmailPart( this.user.getEmail());
-    }
+   // public String getUserEmail() {
+     //   return Utils.trimEmailPart( this.user.getEmail());
+    //}
 
     public String getUserThumbnail() {
         return this.user.getUserThumbnail();
@@ -46,9 +48,16 @@ public class IdeaDetailViewModel {
     public User getUser(){
         return this.user;
     }
+    public String getUserEmail(){
+        return this.user.getEmail();
+    }
 
     public Ideas getIdea(){
         return this.idea;
+    }
+
+    public int getIdeaId(){
+        return  this.idea.getIdeaId();
     }
 
     public Context getContext(){
@@ -95,6 +104,18 @@ public class IdeaDetailViewModel {
         if(intent.resolveActivity(getContext().getPackageManager()) !=null){
             getContext().startActivity(intent);
         }
+    }
+
+    public EditText getCommentEditText(){
+        return this.binding.commentEditText;
+    }
+
+    public String getComment(){
+        return this.binding.commentEditText.getText().toString();
+    }
+
+    public ImageView getSendCommentButton(){
+        return this.binding.send;
     }
 
 }

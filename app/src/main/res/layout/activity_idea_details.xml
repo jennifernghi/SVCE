@@ -172,6 +172,7 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/comment_edit_text"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/eight_dp"
@@ -180,6 +181,7 @@
                                 android:hint="@string/comments" />
 
                             <ImageView
+                                android:id="@+id/send"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/send" />

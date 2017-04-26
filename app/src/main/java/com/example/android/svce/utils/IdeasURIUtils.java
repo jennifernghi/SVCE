@@ -247,7 +247,7 @@ public final class IdeasURIUtils {
         return ideas;
     }
 
-    public static String createJSON(String title, String content, String date, String category, String likes, String author){
+    public static String createJSON(String title, String content, String date, String category, int likes, String author){
         JSONObject ideaObject = new JSONObject();
 
         try {
@@ -266,43 +266,7 @@ public final class IdeasURIUtils {
         return null;
     }
 
-    /*private static String getServerResponse(URL url, String title, String content, String date, String category, String likes, String author) throws IOException{
-        String response = "";
-        if(url == null){
-            return response;
-        }
 
-        //open HTTP connection
-        HttpURLConnection connection = null;
-        InputStream inputStream = null;
-
-        try {
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestMethod("POST");
-            connection.connect();
-
-            DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-            wr.writeBytes(createJSON(title, content, date, category, likes, author));
-            wr.flush();
-            wr.close();
-
-        }finally {
-            //close connection if exist
-            if(connection != null){
-                connection.disconnect();
-            }
-            // close inStream if exist
-            if (inputStream !=null){
-                inputStream.close();
-            }
-        }
-
-
-       // return null;
-    }*/
 
 
 

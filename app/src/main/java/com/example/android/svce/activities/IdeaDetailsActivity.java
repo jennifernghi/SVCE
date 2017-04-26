@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 
 import com.example.android.svce.R;
@@ -25,11 +26,13 @@ import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.model.viewModel.HomeActivityViewModel;
 import com.example.android.svce.model.viewModel.IdeaDetailViewModel;
 import com.example.android.svce.networking.CommentLoader;
+import com.example.android.svce.networking.CommentPost;
+import com.example.android.svce.networking.IdeasPost;
 import com.example.android.svce.utils.Constant;
 
 import java.util.ArrayList;
 
-public class IdeaDetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Comment>> {
+public class IdeaDetailsActivity extends AppCompatActivity {
 
     private ActivityIdeaDetailsBinding xmlBinding;
     private IdeaDetailViewModel viewModel;
@@ -37,6 +40,47 @@ public class IdeaDetailsActivity extends AppCompatActivity implements LoaderMana
     private ArrayList<Comment> comments = new ArrayList<>();
     private User user;
     private Ideas idea;
+    private int COMMENT_LIST_LOADER=1;
+    private int COMMENT_POST_LOADER=2;
+
+    private LoaderManager.LoaderCallbacks<String> commentPostLoader = new LoaderManager.LoaderCallbacks<String>() {
+        @Override
+        public Loader<String> onCreateLoader(int id, Bundle args) {
+            return new CommentPost(getApplicationContext(), viewModel.getComment(), viewModel.getUserEmail(), viewModel.getIdeaId());
+        }
+
+        @Override
+        public void onLoadFinished(Loader<String> loader, String data) {
+            if(Integer.valueOf(data)==201){
+                getLoaderManager().restartLoader(COMMENT_LIST_LOADER, null, commentListLoader);
+            }
+        }
+
+        @Override
+        public void onLoaderReset(Loader<String> loader) {
+            loader.reset();
+        }
+    };
+
+    private LoaderManager.LoaderCallbacks<ArrayList<Comment>> commentListLoader = new LoaderManager.LoaderCallbacks<ArrayList<Comment>>() {
+        @Override
+        public Loader<ArrayList<Comment>> onCreateLoader(int id, Bundle args) {
+            return new CommentLoader(getApplicationContext(), Constant.HOST, String.valueOf(idea.getIdeaId()));
+        }
+
+        @Override
+        public void onLoadFinished(Loader<ArrayList<Comment>> loader, ArrayList<Comment> data) {
+            if(data.size()>1){
+                comments = data;
+                commentAdapter.setLoadedIdeas(comments);
+            }
+        }
+
+        @Override
+        public void onLoaderReset(Loader<ArrayList<Comment>> loader) {
+            loader.reset();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +89,8 @@ public class IdeaDetailsActivity extends AppCompatActivity implements LoaderMana
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initializeBinding();
         initializeCommentRecyclerView(viewModel.getCommentList());
-        startCommentLoading(Constant.LOADING_CONSTANT);
+        startCommentLoading(COMMENT_LIST_LOADER);
+        initializeSendButton();
     }
 
     @Override
@@ -80,27 +125,11 @@ public class IdeaDetailsActivity extends AppCompatActivity implements LoaderMana
         recyclerView.setAdapter(commentAdapter);
     }
 
-    @Override
-    public Loader<ArrayList<Comment>> onCreateLoader(int id, Bundle args) {
-        return new CommentLoader(getApplicationContext(), Constant.HOST, String.valueOf(idea.getIdeaId()));
-    }
 
-    @Override
-    public void onLoadFinished(Loader<ArrayList<Comment>> loader, ArrayList<Comment> data) {
-        if(data.size()>1){
-            comments = data;
-            commentAdapter.setLoadedIdeas(comments);
-        }
-    }
-
-    @Override
-    public void onLoaderReset(Loader<ArrayList<Comment>> loader) {
-        loader.reset();
-    }
 
     public void startCommentLoading(int loaderConstant) {
         if (checkNetWorkConnection()) {
-            getLoaderManager().initLoader(loaderConstant, null, IdeaDetailsActivity.this);
+            getLoaderManager().initLoader(loaderConstant, null, commentListLoader);
         } else {
             //if no internet connection show empty view
             // viewModel.enableEmptyView(true, getString(R.string.no_network));
@@ -116,5 +145,14 @@ public class IdeaDetailsActivity extends AppCompatActivity implements LoaderMana
         } else {
             return false;
         }
+    }
+
+    private void initializeSendButton(){
+        viewModel.getSendCommentButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLoaderManager().restartLoader(COMMENT_POST_LOADER, null, commentPostLoader);
+            }
+        });
     }
 }

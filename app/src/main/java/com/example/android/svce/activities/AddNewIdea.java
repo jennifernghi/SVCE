@@ -103,7 +103,8 @@ public class AddNewIdea extends AppCompatActivity implements LoaderManager.Loade
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
         Log.i("post", data);
-        HomeActivity.startIntent(this, user);
+        HomeActivity.startIntent(this, user, null, null);
+
     }
 
     @Override

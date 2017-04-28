@@ -1,18 +1,12 @@
 package com.example.android.svce.model.viewModel;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.android.svce.activities.MyInfoActivity;
-import com.example.android.svce.activities.UserActivity;
 import com.example.android.svce.databinding.ActivityLoginBinding;
 import com.example.android.svce.model.POJO.User;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by jennifernghinguyen on 4/4/17.

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="CategoryItemViewModel"
+            type="com.example.android.svce.model.viewModel.CategoryItemViewModel" />
+    </data>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/eight_dp"
+    android:onClick="@{CategoryItemViewModel::onSelected}">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="@{CategoryItemViewModel.categoryName}"
+        android:layout_margin="@dimen/eight_dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/eight_dp"
+        android:layout_marginEnd="@dimen/eight_dp"
+        android:background="@color/inactive_icon" />
+
+</LinearLayout>
+</layout>

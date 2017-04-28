@@ -11,7 +11,7 @@ import com.example.android.svce.utils.IdeasURIUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.android.svce.R.id.username;
+
 
 /**
  * Created by jennifernghinguyen on 4/5/17.
@@ -23,13 +23,17 @@ public class IdeasLoader extends AsyncTaskLoader<ArrayList<Ideas>>  {
     private Context context;
     private String startIndex;
     private String endIndex;
-    public IdeasLoader(Context context, String host, String sort, String startIndex, String endIndex) {
+    private String category;
+    private String author;
+    public IdeasLoader(Context context, String host, String sort, String category, String author, String startIndex, String endIndex) {
         super(context);
         this.host = host;
         this.sort = sort;
         this.context = context;
         this.startIndex = startIndex;
         this.endIndex = endIndex;
+        this.category = category;
+        this.author = author;
     }
 
 
@@ -47,7 +51,7 @@ public class IdeasLoader extends AsyncTaskLoader<ArrayList<Ideas>>  {
             return  null;
         }
 
-        String url = IdeasURIUtils.buildUserUrl(context, host, sort, startIndex, endIndex);
+        String url = IdeasURIUtils.buildUserUrl(context, host, sort, category, author, startIndex, endIndex);
         if(url !=null){
             ideas = IdeasURIUtils.fetchData(url);
         }

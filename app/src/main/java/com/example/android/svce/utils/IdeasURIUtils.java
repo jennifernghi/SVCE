@@ -47,7 +47,7 @@ public final class IdeasURIUtils {
      */
 
 
-    public static String buildUserUrl(Context context, String host, String sort, String startIndex, String endIndex){
+    public static String buildUserUrl(Context context, String host, String sort, String category, String author, String startIndex, String endIndex){
         ct=context;
         String urlString = null;
         if(host == null){
@@ -61,6 +61,12 @@ public final class IdeasURIUtils {
         if(!startIndex.equals("")&& (!endIndex.equals(""))) {
             builder.appendQueryParameter(Constant.START_INDEX_QUERY, startIndex);
             builder.appendQueryParameter(Constant.END_INDEX_QUERY, endIndex);
+        }
+        if(!category.equals("")){
+            builder.appendQueryParameter(Constant.CATEGORY_QUERY, category);
+        }
+        if(!author.equals("")){
+            builder.appendQueryParameter(Constant.AUTHOR_QUERY, author);
         }
         urlString = builder.toString();
         Log.i(LOG_TAG, urlString);

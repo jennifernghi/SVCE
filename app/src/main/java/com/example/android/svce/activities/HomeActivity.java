@@ -12,11 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 
 import com.example.android.svce.R;
 import com.example.android.svce.adapters.IdeasAdapter;
 import com.example.android.svce.databinding.ActivityHomeBinding;
+import com.example.android.svce.model.POJO.Category;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.model.viewModel.HomeActivityViewModel;
@@ -35,19 +38,27 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     String startIndex = "";
     String endIndex = "";
     private User user;
+    private String category = "";
+    private String author = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getSupportActionBar().hide();
+       // getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+
         initializeView();
         startLoading(Constant.LOADING_CONSTANT);
 
     }
 
-    public static void startIntent(Context context, User user) {
+    public static void startIntent(Context context, User user, Category category, String author) {
         Intent intent = new Intent(context, HomeActivity.class);
         intent.putExtra(Constant.USER_INFO, user);
+        if(category!=null) {
+            intent.putExtra(Constant.CATEGORY_INFO, category);
+        }
+        if(author!=null) {
+            intent.putExtra(Constant.AUTHOR_INFO, author);
+        }
         context.startActivity(intent);
     }
 
@@ -55,6 +66,14 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     private void initializeBinding() {
         xmlBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         user = (User) getIntent().getSerializableExtra(Constant.USER_INFO);
+        if ((getIntent().getSerializableExtra(Constant.CATEGORY_INFO))!=null) {
+            category = ((Category) getIntent().getSerializableExtra(Constant.CATEGORY_INFO)).getCategory();
+
+         }
+        if ((getIntent().getSerializableExtra(Constant.AUTHOR_INFO))!=null) {
+            author = (String) getIntent().getSerializableExtra(Constant.AUTHOR_INFO);
+
+        }
         viewModel = new HomeActivityViewModel(this, xmlBinding, user);
         xmlBinding.setHomeActivityViewModel(viewModel);
     }
@@ -74,7 +93,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<ArrayList<Ideas>> onCreateLoader(int id, Bundle args) {
         Log.i("home", "on create loader");
-        return new IdeasLoader(getApplicationContext(), Constant.HOST, sort, startIndex, endIndex);
+        return new IdeasLoader(getApplicationContext(), Constant.HOST, sort, category, author, startIndex, endIndex);
     }
 
     @Override
@@ -108,6 +127,32 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
             return true;
         } else {
             return false;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sort_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.newest:
+                sort = getResources().getString(R.string.newest);
+                getLoaderManager().restartLoader(Constant.LOADING_CONSTANT, null, HomeActivity.this );
+                return true;
+            case R.id.oldest:
+                sort = getResources().getString(R.string.oldest);
+                getLoaderManager().restartLoader(Constant.LOADING_CONSTANT, null, HomeActivity.this );
+                return true;
+            case R.id.likes:
+                sort = getResources().getString(R.string.likes);
+                getLoaderManager().restartLoader(Constant.LOADING_CONSTANT, null, HomeActivity.this );
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

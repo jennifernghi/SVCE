@@ -53,7 +53,7 @@ public class IdeasItemViewModel{
     }
 
     public String getCategory(){
-        return this.ideas.getCategory();
+        return "#" + this.ideas.getCategory();
     }
 
 

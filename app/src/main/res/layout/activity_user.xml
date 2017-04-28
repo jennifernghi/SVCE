@@ -1,168 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.android.svce.activities.UserActivity"
-    android:background="@color/white">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="UserActivityViewModel"
+            type="com.example.android.svce.model.viewModel.UserActivityViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        tools:context="com.example.android.svce.activities.UserActivity">
 
-        <!--<android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@android:color/transparent" />
+            android:layout_height="match_parent">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_below="@id/sliding_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/eight_dp"
-            android:layout_marginStart="8dp"/>-->
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/eight_dp"
-            android:layout_marginStart="@dimen/eight_dp"
-            android:layout_marginEnd="@dimen/eight_dp">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/account_setting"
-                android:textColor="@color/active_icon"
-                android:layout_marginBottom="@dimen/eight_dp"/>
-
-            <TextView
-                android:id="@+id/my_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/my_info"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/eight_dp"/>
-
-            <TextView
-                android:id="@+id/my_ideas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/my_ideas"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/eight_dp"/>
-
-            <TextView
-                android:id="@+id/my_saved_ideas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="@string/my_saved_ideas"
-                android:textColor="@color/black"
-                android:layout_marginBottom="@dimen/eight_dp"/>
-
-        </LinearLayout>
-
-        <!--control buttons-->
-        <LinearLayout
-            android:id="@+id/control_container"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/left_control_container"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.42"
-                android:gravity="center"
+                android:id="@+id/control_container"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/list_button"
+                <LinearLayout
+                    android:id="@+id/left_control_container"
                     android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:layout_weight="0.5"
-                    android:maxWidth="25dp"
-                    android:src="@drawable/list" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/search_button"
+                    <ImageView
+                        android:id="@+id/list_button"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_weight="0.5"
+                        android:maxWidth="20dp"
+                        android:src="@drawable/list" />
+
+                    <ImageView
+                        android:id="@+id/search_button"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:layout_weight="0.5"
+                        android:maxWidth="20dp"
+                        android:src="@drawable/search" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/right_control_container"
                     android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="@dimen/eight_dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:layout_weight="0.5"
-                    android:maxWidth="25dp"
-                    android:src="@drawable/search" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/user_button"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:layout_weight="0.5"
+                        android:maxWidth="20dp"
+                        android:src="@drawable/user_active" />
+
+                    <ImageView
+                        android:id="@+id/logout_button"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:layout_weight="0.5"
+                        android:maxWidth="20dp"
+                        android:src="@drawable/logout" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/middle_control_container"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.15"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/control_container"
+                android:orientation="vertical">
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/add"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:scaleType="center"
-                    android:src="@drawable/edit"
-                    app:backgroundTint="@color/white"
-                    app:fabSize="normal" />
-            </LinearLayout>
+                    android:layout_marginBottom="@dimen/eight_dp"
+                    android:layout_marginTop="@dimen/eight_dp"
+                    android:gravity="center_vertical|center"
+                    android:orientation="vertical">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginBottom="@dimen/eight_dp"
+                        android:layout_marginTop="@dimen/two_dp"
+                        app:thumbnailImageUrl="@{UserActivityViewModel.userThumbnail}"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="1dp" />
+                </LinearLayout>
             <LinearLayout
-                android:id="@+id/right_control_container"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.42"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/user_button"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="@dimen/eight_dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:layout_weight="0.5"
-                    android:maxWidth="25dp"
-                    android:src="@drawable/user_active" />
-
-                <ImageView
-                    android:id="@+id/logout_button"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="@dimen/eight_dp"
-                    android:layout_weight="0.5"
-                    android:maxWidth="25dp"
-                    android:src="@drawable/logout" />
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/eight_dp"
+                android:gravity="center_vertical|center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:text="@{UserActivityViewModel.name}"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:text="@{UserActivityViewModel.userEmail}"
+                    android:layout_gravity="center"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/my_ideas"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{UserActivityViewModel::myIdeas}"
+                    android:text="@string/my_ideas"
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
-        </LinearLayout>
 
 
+        </RelativeLayout>
 
-    </RelativeLayout>
 
-
-</android.support.design.widget.CoordinatorLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

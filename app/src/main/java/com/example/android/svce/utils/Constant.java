@@ -13,7 +13,11 @@ public final class Constant {
     public static final String START_INDEX_QUERY="startIndex";
     public static final String END_INDEX_QUERY="endIndex";
     public static final String IDEAID_QUERY="ideaid";
+    public static final String CATEGORY_QUERY="category";
+    public static final String AUTHOR_QUERY="author";
     public final static String USER_INFO="user";
+    public final static String CATEGORY_INFO="category";
+    public final static String AUTHOR_INFO="author";
     public final static String IDEA_INFO="idea";
     public final static String JSON_TITLE="title";
     public final static String JSON_CONTENT="content";

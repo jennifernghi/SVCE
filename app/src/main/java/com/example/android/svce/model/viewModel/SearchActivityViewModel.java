@@ -1,38 +1,34 @@
 package com.example.android.svce.model.viewModel;
 
 import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.android.svce.activities.AddNewIdea;
-
+import com.example.android.svce.activities.HomeActivity;
+import com.example.android.svce.activities.IdeaDetailsActivity;
 import com.example.android.svce.activities.SearchActivity;
 import com.example.android.svce.activities.UserActivity;
 import com.example.android.svce.databinding.ActivityHomeBinding;
+import com.example.android.svce.databinding.ActivitySearchBinding;
 import com.example.android.svce.model.POJO.User;
-import com.example.android.svce.utils.Utils;
 
 /**
- * Created by jennifernghinguyen on 4/21/17.
+ * Created by jennifernghinguyen on 4/26/17.
  */
 
-public class HomeActivityViewModel {
-
+public class SearchActivityViewModel {
     private User user;
     private Context context;
-    private ActivityHomeBinding binding;
-
-    public HomeActivityViewModel(Context context, ActivityHomeBinding binding, User user){
+    private ActivitySearchBinding binding;
+    public SearchActivityViewModel(Context context, ActivitySearchBinding binding, User user){
         this.context=context;
         this.binding=binding;
         this.user = user;
     }
 
-
     public RecyclerView getRecyclerView(){
-        return binding.ideasList;
+        return binding.categoryList;
     }
 
     public User getUser(){
@@ -41,26 +37,6 @@ public class HomeActivityViewModel {
 
     public Context getContext(){
         return this.context;
-    }
-
-    public FloatingActionButton getAddButton(){
-        return binding.add;
-    }
-
-    public ImageView getListButton(){
-        return binding.listButton;
-    }
-
-    public ImageView getSearchButton(){
-        return binding.searchButton;
-    }
-
-    public ImageView getUserButton(){
-        return binding.userButton;
-    }
-
-    public ImageView getLogoutButton(){
-        return binding.logoutButton;
     }
 
     public void addIdea(View view){
@@ -73,5 +49,7 @@ public class HomeActivityViewModel {
     public void openUserActivity(View view){
         UserActivity.startIntent(getContext(), getUser());
     }
-
+    public void openHomeActivity(View view){
+        HomeActivity.startIntent(getContext(), getUser(), null, null);
+    }
 }

@@ -16,6 +16,9 @@
         <item>Technology</item>
         <item>Travel</item>
     </string-array>
+    <string name="newest">newest</string>
+    <string name="oldest">oldest</string>
+    <string name="likes">likes</string>
     <string name="app_name">IdeaHub</string>
     <string name="sign_up_text">sign up</string>
     <string name="log_in_text">log in</string>

@@ -73,6 +73,7 @@ public class IdeaDetailsActivity extends AppCompatActivity {
             if(data.size()>1){
                 comments = data;
                 commentAdapter.setLoadedIdeas(comments);
+                viewModel.getCommentEditText().setText("");
             }
         }
 
@@ -151,7 +152,9 @@ public class IdeaDetailsActivity extends AppCompatActivity {
         viewModel.getSendCommentButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getLoaderManager().restartLoader(COMMENT_POST_LOADER, null, commentPostLoader);
+                if(!viewModel.getCommentEditText().getText().equals("")) {
+                    getLoaderManager().restartLoader(COMMENT_POST_LOADER, null, commentPostLoader);
+                }
             }
         });
     }

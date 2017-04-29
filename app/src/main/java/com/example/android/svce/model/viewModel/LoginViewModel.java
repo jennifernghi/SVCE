@@ -33,12 +33,6 @@ public class LoginViewModel {
     public Button getGoogleButton(){
         return activityLoginBinding.googleButton;
     }
-    public LinearLayout getEmptyView(){
-        return activityLoginBinding.emptyview;
-    }
 
-    public TextView getEmptyViewMessage(){
-        return activityLoginBinding.emptyviewMessage;
-    }
 
 }

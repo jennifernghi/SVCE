@@ -35,7 +35,7 @@ public class IdeasItemViewModel{
         return this.user;
     }
     public String getAuthor(){
-        return "@ " + Utils.trimEmailPart(this.ideas.getAuthor());
+        return "@" + Utils.trimEmailPart(this.ideas.getAuthor());
     }
 
     public Ideas getIdea(){return this.ideas;}

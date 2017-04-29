@@ -19,7 +19,8 @@
     <string name="newest">newest</string>
     <string name="oldest">oldest</string>
     <string name="likes">likes</string>
-    <string name="app_name">IdeaHub</string>
+    <string name="app_name">IDEAS HUB</string>
+
     <string name="sign_up_text">sign up</string>
     <string name="log_in_text">log in</string>
     <string name="back_text">back</string>
@@ -52,7 +53,7 @@
     <string name="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete.</string>
     <string name="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eadem fortitudinis ratio reperietur. Haec quo modo conveniant, non sane intellego. Dolere malum est: in crucem qui agitur, beatus esse non potest. Duo Reges: constructio interrete.</string>
     <string name="like">100</string>
-    <string name="comments">comments</string>
+    <string name="comments">Comments</string>
     <string name="pass_string">*********</string>
     <string name="email_string">doe.john@sjsu.edu</string>
     <string name="user_string">johndoe</string>

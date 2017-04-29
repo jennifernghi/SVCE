@@ -42,7 +42,7 @@ public class SearchActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle(getString(R.string.category));
         getCaterory();
         initializeView();
 

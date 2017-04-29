@@ -32,7 +32,7 @@ public class CommentItemViewModel {
     }
 
     public String getAuthor(){
-        return "@ " + Utils.trimEmailPart(this.comment.getAuthor());
+        return "@" + Utils.trimEmailPart(this.comment.getAuthor());
     }
     public String getComment(){
         return this.comment.getComment();

@@ -25,7 +25,8 @@
         <activity android:name=".activities.UserActivity" />
         <activity android:name=".activities.MyIdeasActivity" />
         <activity android:name=".activities.MySavedIdeasActivity" />
-        <activity android:name=".activities.IdeaDetailsActivity" />
+        <activity android:name=".activities.IdeaDetailsActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".activities.SearchActivity" />
         <activity android:name=".activities.AddNewIdea"
             android:screenOrientation="portrait"/>

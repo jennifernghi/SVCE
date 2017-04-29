@@ -21,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 public class Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -28,6 +30,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     private LoginViewModel loginViewModel; //bind to view model
     private GoogleApiClient googleApiClient;
     private static final int REG_CODE = 9001;
+    private boolean signin =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,10 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getSupportActionBar().hide();
         initializeBinding();
-
+        if(signin){
+            signout();
+            signin=false;
+        }
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
         loginViewModel.getGoogleButton().setOnClickListener(new View.OnClickListener() {
@@ -45,6 +51,12 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        googleApiClient.connect();
     }
 
     /**
@@ -88,6 +100,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -100,6 +113,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private void handleResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
+            signin=true;
             GoogleSignInAccount account = result.getSignInAccount();
             String username = account.getDisplayName();
             String email = account.getEmail();
@@ -113,5 +127,21 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         Intent intent = new Intent(context, Login.class);
         context.startActivity(intent);
 
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        signout();
+    }
+
+    private void signout(){
+        Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                signin=false;
+            }
+        });
     }
 }

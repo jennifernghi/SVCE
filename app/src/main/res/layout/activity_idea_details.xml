@@ -14,12 +14,14 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_gray"
+            android:background="@color/white"
             tools:context="com.example.android.svce.activities.IdeaDetailsActivity">
 
             <RelativeLayout
@@ -31,7 +33,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/eight_dp"
                     android:layout_marginTop="@dimen/eight_dp"
-                    android:background="@color/light_gray"
+                    android:background="@color/white"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/eight_dp">
 
@@ -136,13 +138,16 @@
 
 
                     </LinearLayout>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:background="@color/light_gray" />
                     <!--comments-->
                     <LinearLayout
                         android:id="@+id/comment_container"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/light_gray"
+                        android:background="@color/white"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -156,12 +161,19 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="@dimen/eight_dp"
                                 android:layout_marginStart="@dimen/eight_dp"
-                                android:paddingBottom="@dimen/eight_dp"
-                                android:paddingTop="@dimen/eight_dp"
+
                                 android:text="@string/comments"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
+
                         </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/four_dp"
+                            android:layout_marginEnd="@dimen/four_dp"
+                            android:background="@color/light_gray" />
 
                         <!--comment box-->
                         <LinearLayout
@@ -178,12 +190,14 @@
                                 android:layout_marginEnd="@dimen/eight_dp"
                                 android:layout_marginStart="@dimen/eight_dp"
                                 android:layout_weight="0.7"
+                                android:backgroundTint="@color/dark_yellow"
                                 android:hint="@string/comments" />
 
                             <ImageView
                                 android:id="@+id/send"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="@dimen/eight_dp"
                                 android:src="@drawable/send" />
                         </LinearLayout>
 
@@ -212,7 +226,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:onClick="@{IdeaDetailViewModel::sendEmail}"
-
+            android:elevation="0dp"
             android:src="@drawable/email"
             app:backgroundTint="@color/colorPrimary"
             app:fabSize="normal" />

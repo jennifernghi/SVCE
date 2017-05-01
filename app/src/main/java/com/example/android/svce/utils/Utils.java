@@ -14,7 +14,10 @@ import java.util.Date;
 public final class Utils {
 
     public static String trimEmailPart(String email){
-        return email.substring(0, email.lastIndexOf('@'));
+        if(email.indexOf('@')!=-1) {
+            return email.substring(0, email.lastIndexOf('@'));
+        }
+        return email;
     }
 
     public static String getTodayDate(){

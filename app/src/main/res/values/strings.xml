@@ -6,7 +6,7 @@
         <item>Education</item>
         <item>Finance</item>
         <item>Fitness</item>
-        <item>LifeStyle</item>
+        <item>Lifestyle</item>
         <item>Literature</item>
         <item>Music</item>
         <item>Photography</item>
@@ -40,7 +40,7 @@
     <string name="account_setting">Account Setting</string>
     <string name="ideas_title">Title</string>
     <string name="ideas_content">Content</string>
-    <string name="close">close</string>
+    <string name="close">Cancel</string>
     <string name="save">save</string>
     <string name="category">Category</string>
     <string name="google_sign_in">Sign in with Google</string>

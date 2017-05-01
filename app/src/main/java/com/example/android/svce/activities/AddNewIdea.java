@@ -52,6 +52,13 @@ public class AddNewIdea extends AppCompatActivity implements LoaderManager.Loade
                 startPosting(Constant.LOADING_CONSTANT);
             }
         });
+
+        viewModel.getCloseButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddNewIdea.this.finish();
+            }
+        });
     }
 
     public static void startIntent(Context context, User user) {
@@ -132,4 +139,6 @@ public class AddNewIdea extends AppCompatActivity implements LoaderManager.Loade
             return false;
         }
     }
+
+
 }

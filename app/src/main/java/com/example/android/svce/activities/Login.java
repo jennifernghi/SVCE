@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -115,6 +116,8 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         if (result.isSuccess()) {
             signin=true;
             GoogleSignInAccount account = result.getSignInAccount();
+            String userId = account.getId();
+            Log.i("Login", userId);
             String username = account.getDisplayName();
             String email = account.getEmail();
             String thumbnail = account.getPhotoUrl().toString();

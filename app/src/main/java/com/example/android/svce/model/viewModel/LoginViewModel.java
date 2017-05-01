@@ -30,7 +30,7 @@ public class LoginViewModel {
 
     public User getUser(){ return this.user;}
 
-    public Button getGoogleButton(){
+    public LinearLayout getGoogleButton(){
         return activityLoginBinding.googleButton;
     }
 

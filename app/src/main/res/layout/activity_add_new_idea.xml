@@ -32,7 +32,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="@dimen/sixteen_dp"
         android:layout_marginEnd="@dimen/sixteen_dp"
-        android:src="@drawable/plus"
+        android:src="@drawable/newpost"
+        android:scaleType="centerCrop"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="normal" />
     <LinearLayout
@@ -55,6 +56,8 @@
             android:background="@drawable/gray_border"
             android:gravity="top"
             android:padding="@dimen/four_dp"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@color/dark_yellow"
             android:textSize="14sp" />
 
         <TextView
@@ -110,8 +113,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/sixteen_dp"
                 android:text="@string/close"
+
                 android:textAllCaps="true"
-                android:textColor="@color/active_icon"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
 

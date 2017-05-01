@@ -12,4 +12,5 @@
     <color name="google_color">#af3c46</color>
     <color name="main_color">#fff58c</color>
     <color name="dark_yellow">#F4B428</color>
+    <color name="google_text_color">#626262</color>
 </resources>

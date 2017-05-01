@@ -2,10 +2,12 @@ package com.example.android.svce.model.viewModel;
 
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.android.svce.activities.AddNewIdea;
 import com.example.android.svce.databinding.ActivityAddNewIdeaBinding;
 import com.example.android.svce.model.POJO.User;
 
@@ -48,4 +50,6 @@ public class AddIdeaViewModel {
     public String getAuthor(){
         return this.user.getEmail();
     }
+
+
 }

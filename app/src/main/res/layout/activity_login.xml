@@ -47,19 +47,48 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-            <Button
+            <!--<Button
                 android:id="@+id/google_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="@dimen/sixteen_dp"
-                android:layout_marginStart="@dimen/sixteen_dp"
-                android:background="@color/google_color"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="35dp"
+                android:background="@color/dark_yellow"
+                android:textSize="14sp"
                 android:text="@string/google_sign_in"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold" />-->
+
+            <LinearLayout
+                android:id="@+id/google_button"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:orientation="horizontal"
+                android:gravity="center|center_vertical|left"
+                android:background="@color/white">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:src="@drawable/google"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/google_sign_in"
+                    android:textColor="@color/google_text_color"
+                    android:layout_marginEnd="@dimen/eight_dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </RelativeLayout>
 
 

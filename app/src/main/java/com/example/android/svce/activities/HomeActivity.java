@@ -155,4 +155,9 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

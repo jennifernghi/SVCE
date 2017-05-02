@@ -21,7 +21,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-import static com.example.android.svce.R.string.date;
+
 
 /**
  * Created by jennifernghinguyen on 4/23/17.

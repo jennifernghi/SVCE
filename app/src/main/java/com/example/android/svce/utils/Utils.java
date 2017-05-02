@@ -20,6 +20,10 @@ public final class Utils {
         return email;
     }
 
+    public static boolean isSJSUEmail(String email){
+            return email.substring(email.lastIndexOf('@')).trim().equals("@sjsu.edu");
+    }
+
 
 
     public static String getTodayDate(){

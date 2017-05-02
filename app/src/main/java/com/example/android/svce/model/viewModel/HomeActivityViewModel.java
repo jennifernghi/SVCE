@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.android.svce.activities.AddNewIdea;
 
@@ -62,6 +64,14 @@ public class HomeActivityViewModel {
 
     public ImageView getLogoutButton(){
         return binding.logoutButton;
+    }
+
+    public ProgressBar getProgressBar(){
+        return binding.loadingIndicator;
+    }
+
+    public TextView getEmptyTextView(){
+        return binding.emptyViewMessage;
     }
 
     public void addIdea(View view){

@@ -15,7 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.example.android.svce.R.string.date;
 
 /**
  * Created by jennifernghinguyen on 4/25/17.

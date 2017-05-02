@@ -17,6 +17,7 @@ import com.example.android.svce.databinding.ActivityLoginBinding;
 import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.model.viewModel.LoginViewModel;
 import com.example.android.svce.utils.Constant;
+import com.example.android.svce.utils.Utils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,10 +31,10 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private ActivityLoginBinding activityLoginBinding; //bind to xml UI
     private LoginViewModel loginViewModel; //bind to view model
-    private GoogleApiClient googleApiClient;
-    private static final int REG_CODE = 9001;
+    private GoogleApiClient googleApiClient = null;
+    private static  final int REG_CODE = 9001;
     private User user;
-    private boolean signin =false;
+    private boolean signin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,14 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getSupportActionBar().hide();
         initializeBinding();
+
         user = (User) getIntent().getSerializableExtra(Constant.USER_INFO);
-        if(signin && user !=null){
-            signout();
-            signin=false;
-            user = null;
-        }
+
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
+        }
+        // googleApiClient.connect();
         loginViewModel.getGoogleButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +57,31 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (googleApiClient.isConnected()) {
+            googleApiClient.disconnect();
+
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
         googleApiClient.connect();
+
     }
 
     /**
@@ -99,11 +119,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     private void signIn() {
+
         Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
         startActivityForResult(intent, REG_CODE);
 
     }
-
 
 
     @Override
@@ -118,15 +138,29 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private void handleResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
-            signin=true;
+            signin = true;
             GoogleSignInAccount account = result.getSignInAccount();
             String userId = account.getId();
             Log.i("Login", userId);
             String username = account.getDisplayName();
             String email = account.getEmail();
-            String thumbnail = account.getPhotoUrl().toString();
-            user = new User(username, email, thumbnail);
-            HomeActivity.startIntent(this, user, null, null);
+            if (Utils.isSJSUEmail(email)) {
+                String thumbnail;
+                if (account.getPhotoUrl() != null) {
+                    thumbnail = account.getPhotoUrl().toString();
+                    user = new User(username, email, thumbnail);
+                } else {
+                    user = new User(username, email, null);
+                }
+
+                HomeActivity.startIntent(this, user, null, null);
+            } else {
+                signin = false;
+                signout();
+                enableEmptyView(getString(R.string.wrong_account));
+            }
+
+
         }
     }
 
@@ -143,12 +177,13 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         signout();
     }
 
-    private void signout(){
+    private void signout() {
         Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
             public void onResult(@NonNull Status status) {
-                signin=false;
+                signin = false;
                 user = null;
+
             }
         });
     }
@@ -157,4 +192,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     public void onBackPressed() {
 
     }
+
+    private void enableEmptyView(String str){
+        loginViewModel.getEmptyView().setVisibility(View.VISIBLE);
+        loginViewModel.getEmptyViewTextView().setText(str);
+    }
+
+
 }

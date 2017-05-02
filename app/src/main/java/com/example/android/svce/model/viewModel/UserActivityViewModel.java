@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.android.svce.R;
 import com.example.android.svce.activities.HomeActivity;
 import com.example.android.svce.activities.Login;
 import com.example.android.svce.activities.SearchActivity;
@@ -53,7 +54,8 @@ public class UserActivityViewModel {
     @BindingAdapter("thumbnailImageUrl")
     public static void setImages(ImageView imageView, String thumbnailImageUrl) {
         Context context = imageView.getContext();
-        Glide.with(context).load(thumbnailImageUrl).into(imageView);
+
+        Glide.with(context).load(thumbnailImageUrl).error(R.drawable.default_user).into(imageView);
     }
 
     public void myIdeas(View view){

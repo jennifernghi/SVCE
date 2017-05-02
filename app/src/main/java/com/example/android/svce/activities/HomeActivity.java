@@ -4,16 +4,19 @@ import android.content.Loader;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 
 import com.example.android.svce.R;
@@ -47,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
 
         initializeView();
         startLoading(Constant.LOADING_CONSTANT);
+        showProgressBar(true);
 
     }
 
@@ -99,8 +103,12 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<ArrayList<Ideas>> loader, ArrayList<Ideas> data) {
         if(data.size()>=1){
+            showProgressBar(false);
             ideas = data;
             ideasAdapter.setLoadedIdeas(ideas);
+        }else {
+            showProgressBar(false);
+            enableEmptyTextView(true, "No ideas found!");
         }
     }
 
@@ -159,5 +167,23 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onBackPressed() {
 
+    }
+
+    private void showProgressBar(boolean show){
+        if(show) {
+            viewModel.getProgressBar().getIndeterminateDrawable()
+                    .setColorFilter(ContextCompat.getColor(this, R.color.active_icon), PorterDuff.Mode.SRC_IN );
+            viewModel.getProgressBar().setVisibility(View.VISIBLE);
+        }else {
+            viewModel.getProgressBar().setVisibility(View.GONE);
+        }
+    }
+    private void enableEmptyTextView(boolean show, String str){
+        if(show) {
+            viewModel.getEmptyTextView().setVisibility(View.VISIBLE);
+            viewModel.getEmptyTextView().setText(str);
+        }else {
+            viewModel.getEmptyTextView().setVisibility(View.GONE);
+        }
     }
 }

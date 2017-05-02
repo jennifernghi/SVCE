@@ -70,7 +70,7 @@ public class IdeaDetailsActivity extends AppCompatActivity {
 
         @Override
         public void onLoadFinished(Loader<ArrayList<Comment>> loader, ArrayList<Comment> data) {
-            if(data.size()>1){
+            if(data.size()>=1){
                 comments = data;
                 commentAdapter.setLoadedIdeas(comments);
                 viewModel.getCommentEditText().setText("");

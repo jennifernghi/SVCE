@@ -20,6 +20,8 @@ public final class Utils {
         return email;
     }
 
+
+
     public static String getTodayDate(){
         android.text.format.DateFormat dateFormat = new android.text.format.DateFormat();
         return dateFormat.format("yyyy-MM-dd", new Date()).toString();

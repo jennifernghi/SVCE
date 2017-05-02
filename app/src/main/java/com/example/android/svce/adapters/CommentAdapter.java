@@ -49,7 +49,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 
     public  void setLoadedIdeas(ArrayList<Comment> data){
         comments = data;
-        notifyDataSetChanged();;
+        notifyDataSetChanged();
     }
 
 

@@ -38,18 +38,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/four_dp"
+            android:layout_marginBottom="@dimen/two_dp"
             android:layout_marginTop="@dimen/two_dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/four_dp"
-                android:gravity="center_vertical"
-                android:text="@{IdeasItemViewModel.date}"
-                android:textSize="12sp" />
+
 
             <TextView
                 android:id="@+id/type"
@@ -57,8 +50,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/four_dp"
                 android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:onClick="@{IdeasItemViewModel::selectCategory}"
                 android:text="@{IdeasItemViewModel.category}"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/author"
@@ -66,24 +61,42 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/four_dp"
                 android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:onClick="@{IdeasItemViewModel::selectAuthor}"
                 android:text="@{IdeasItemViewModel.author}"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/four_dp"
+            android:layout_marginBottom="@dimen/four_dp"
+            android:gravity="center_vertical"
+            android:text="@{IdeasItemViewModel.date}"
+            android:textSize="13sp" />
         <!-- 3rd row: summary -->
         <TextView
             android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/four_dp"
+            android:layout_marginStart="@dimen/four_dp"
             android:ellipsize="end"
             android:maxLines="4"
             android:text="@{IdeasItemViewModel.content}"
             android:textSize="14sp" />
 
         <!--4th row: like and comment-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="@dimen/four_dp"
+            android:layout_marginStart="@dimen/four_dp"
+            android:background="@color/light_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"

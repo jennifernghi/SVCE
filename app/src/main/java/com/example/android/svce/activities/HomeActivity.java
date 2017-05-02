@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<ArrayList<Ideas>> loader, ArrayList<Ideas> data) {
-        if(data.size()>1){
+        if(data.size()>=1){
             ideas = data;
             ideasAdapter.setLoadedIdeas(ideas);
         }

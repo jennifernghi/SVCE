@@ -16,6 +16,7 @@ import com.example.android.svce.R;
 import com.example.android.svce.databinding.ActivityLoginBinding;
 import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.model.viewModel.LoginViewModel;
+import com.example.android.svce.utils.Constant;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +32,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     private LoginViewModel loginViewModel; //bind to view model
     private GoogleApiClient googleApiClient;
     private static final int REG_CODE = 9001;
+    private User user;
     private boolean signin =false;
 
     @Override
@@ -39,9 +41,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         getSupportActionBar().hide();
         initializeBinding();
-        if(signin){
+        user = (User) getIntent().getSerializableExtra(Constant.USER_INFO);
+        if(signin && user !=null){
             signout();
             signin=false;
+            user = null;
         }
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         googleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, signInOptions).build();
@@ -121,15 +125,15 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             String username = account.getDisplayName();
             String email = account.getEmail();
             String thumbnail = account.getPhotoUrl().toString();
-            User user = new User(username, email, thumbnail);
+            user = new User(username, email, thumbnail);
             HomeActivity.startIntent(this, user, null, null);
         }
     }
 
-    public static void startIntent(Context context) {
+    public static void startIntent(Context context, User user) {
         Intent intent = new Intent(context, Login.class);
+        intent.putExtra(Constant.USER_INFO, user);
         context.startActivity(intent);
-
 
     }
 
@@ -144,7 +148,13 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             @Override
             public void onResult(@NonNull Status status) {
                 signin=false;
+                user = null;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

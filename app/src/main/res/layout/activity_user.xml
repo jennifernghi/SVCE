@@ -27,10 +27,9 @@
 
             <LinearLayout
                 android:id="@+id/control_container"
+                style="@style/control_container"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -44,51 +43,36 @@
 
                     <ImageView
                         android:id="@+id/list_button"
+                        style="@style/button_menu"
                         android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
                         android:layout_weight="0.5"
-                        android:maxWidth="20dp"
+                        android:onClick="@{UserActivityViewModel::openHomeActivity}"
                         android:src="@drawable/list" />
 
                     <ImageView
                         android:id="@+id/search_button"
+                        style="@style/button_menu"
                         android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="@dimen/eight_dp"
-                        android:layout_marginStart="@dimen/eight_dp"
                         android:layout_weight="0.5"
-                        android:maxWidth="20dp"
+                        android:onClick="@{UserActivityViewModel::searchCategory}"
                         android:src="@drawable/search" />
-                </LinearLayout>
 
-
-                <LinearLayout
-                    android:id="@+id/right_control_container"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/user_button"
+                        style="@style/button_menu"
                         android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginEnd="@dimen/eight_dp"
-                        android:layout_marginStart="@dimen/eight_dp"
                         android:layout_weight="0.5"
-                        android:maxWidth="20dp"
                         android:src="@drawable/user_active" />
 
                     <ImageView
                         android:id="@+id/logout_button"
+                        style="@style/button_menu"
                         android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="@dimen/eight_dp"
                         android:layout_weight="0.5"
-                        android:maxWidth="20dp"
-                        android:src="@drawable/logout" />
+                        android:src="@drawable/logout"
+                        android:onClick="@{UserActivityViewModel::logout}"/>
 
                 </LinearLayout>
 
@@ -111,48 +95,132 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_marginBottom="@dimen/eight_dp"
                         android:layout_marginTop="@dimen/two_dp"
-                        app:thumbnailImageUrl="@{UserActivityViewModel.userThumbnail}"
                         app:civ_border_color="@color/white"
-                        app:civ_border_width="1dp" />
+                        app:civ_border_width="1dp"
+                        app:thumbnailImageUrl="@{UserActivityViewModel.userThumbnail}" />
                 </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/eight_dp"
-                android:gravity="center_vertical|center"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"
-                    android:text="@{UserActivityViewModel.name}"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"
-                    android:text="@{UserActivityViewModel.userEmail}"
-                    android:layout_gravity="center"/>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/my_ideas"
-                    android:layout_width="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{UserActivityViewModel::myIdeas}"
-                    android:text="@string/my_ideas"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/four_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:text="@string/your_profile"
+                        android:textColor="@color/dark_yellow"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:background="@color/dark_yellow" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/eight_dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/four_dp"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:text="@string/name"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:text="@{UserActivityViewModel.name}"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/eight_dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/four_dp"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:text="@string/email"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/eight_dp"
+                            android:text="@{UserActivityViewModel.userEmail}"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/four_dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/four_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:text="@string/your_activities"
+                        android:textColor="@color/dark_yellow"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="@dimen/eight_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:background="@color/dark_yellow" />
+
+
+                    <TextView
+                        android:id="@+id/my_ideas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/eight_dp"
+                        android:layout_marginBottom="@dimen/four_dp"
+                        android:layout_marginStart="@dimen/eight_dp"
+                        android:onClick="@{UserActivityViewModel::myIdeas}"
+                        android:text="@string/my_ideas"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
 
         </RelativeLayout>

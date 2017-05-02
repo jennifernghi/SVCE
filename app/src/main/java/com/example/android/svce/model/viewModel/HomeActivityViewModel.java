@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.android.svce.activities.AddNewIdea;
 
+import com.example.android.svce.activities.Login;
 import com.example.android.svce.activities.SearchActivity;
 import com.example.android.svce.activities.UserActivity;
 import com.example.android.svce.databinding.ActivityHomeBinding;
@@ -74,4 +75,7 @@ public class HomeActivityViewModel {
         UserActivity.startIntent(getContext(), getUser());
     }
 
+    public void logout(View view){
+        Login.startIntent(getContext(), getUser());
+    }
 }

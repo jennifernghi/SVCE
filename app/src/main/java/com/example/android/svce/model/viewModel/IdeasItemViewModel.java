@@ -3,7 +3,9 @@ package com.example.android.svce.model.viewModel;
 import android.content.Context;
 import android.view.View;
 
+import com.example.android.svce.activities.HomeActivity;
 import com.example.android.svce.activities.IdeaDetailsActivity;
+import com.example.android.svce.model.POJO.Category;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.utils.Utils;
@@ -38,6 +40,10 @@ public class IdeasItemViewModel{
         return "@" + Utils.trimEmailPart(this.ideas.getAuthor());
     }
 
+    public String getAuthorFullEmail(){
+        return this.ideas.getAuthor();
+    }
+
     public Ideas getIdea(){return this.ideas;}
 
     public String getContent(){
@@ -55,10 +61,19 @@ public class IdeasItemViewModel{
     public String getCategory(){
         return "#" + this.ideas.getCategory();
     }
-
+    public Category getCategoryOb(){
+        return new Category(this.ideas.getCategory());
+    }
 
     public void onSelected(View view){
         IdeaDetailsActivity.startIntent(view.getContext(), getUser(), getIdea());
     }
 
+    public void selectAuthor(View view){
+        HomeActivity.startIntent(getContext(), getUser(), null, getAuthorFullEmail());
+    }
+
+    public void selectCategory(View view){
+        HomeActivity.startIntent(getContext(), getUser(), getCategoryOb(), null);
+    }
 }

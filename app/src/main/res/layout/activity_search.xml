@@ -71,7 +71,7 @@
                     style="@style/button_menu"
 
                     android:layout_weight="0.5"
-
+                    android:onClick="@{SearchActivityViewModel::logout}"
                     android:src="@drawable/logout" />
 
             </LinearLayout>

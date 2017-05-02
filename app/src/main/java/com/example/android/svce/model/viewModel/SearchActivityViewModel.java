@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.android.svce.activities.AddNewIdea;
 import com.example.android.svce.activities.HomeActivity;
 import com.example.android.svce.activities.IdeaDetailsActivity;
+import com.example.android.svce.activities.Login;
 import com.example.android.svce.activities.SearchActivity;
 import com.example.android.svce.activities.UserActivity;
 import com.example.android.svce.databinding.ActivityHomeBinding;
@@ -51,5 +52,9 @@ public class SearchActivityViewModel {
     }
     public void openHomeActivity(View view){
         HomeActivity.startIntent(getContext(), getUser(), null, null);
+
+    }
+    public void logout(View view){
+        Login.startIntent(getContext(), getUser());
     }
 }

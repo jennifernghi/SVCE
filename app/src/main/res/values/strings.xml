@@ -20,20 +20,13 @@
     <string name="oldest">oldest</string>
     <string name="likes">likes</string>
     <string name="app_name">IDEAS HUB</string>
-
-    <string name="sign_up_text">sign up</string>
-    <string name="log_in_text">log in</string>
-    <string name="back_text">back</string>
-    <string name="username_text">Username</string>
-    <string name="phone_number_text">Phone Number</string>
-    <string name="phone_number_hint">(XXX) \u002D XXX \u002D XXXX</string>
-    <string name="new_username">New username</string>
+    <string name="your_profile">Your profile</string>
+    <string name="name">Name</string>
     <string name="email">Email</string>
-    <string name="password_text">Password</string>
-    <string name="confirm_password_text">Confirm password</string>
-    <string name="email_text">Email@sjsu.edu</string>
-    <string name="Phone_number_text">Phone number</string>
-    <string name="title_activity_user">UserActivity</string>
+    <string name="your_activities">Your activities</string>
+
+
+
     <string name="my_info">My Information</string>
     <string name="my_ideas">My Ideas</string>
     <string name="my_saved_ideas">My Saved Ideas</string>

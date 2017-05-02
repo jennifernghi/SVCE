@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.android.svce.activities.HomeActivity;
+import com.example.android.svce.activities.Login;
 import com.example.android.svce.databinding.ActivityIdeaDetailsBinding;
+import com.example.android.svce.model.POJO.Category;
 import com.example.android.svce.model.POJO.Ideas;
 import com.example.android.svce.model.POJO.User;
 import com.example.android.svce.utils.Utils;
@@ -69,7 +72,7 @@ public class IdeaDetailViewModel {
     }
 
     public String getAuthor(){
-        return "@ " + Utils.trimEmailPart(this.idea.getAuthor());
+        return "@" + Utils.trimEmailPart(this.idea.getAuthor());
     }
 
     public String getAuthorEmail(){
@@ -89,7 +92,11 @@ public class IdeaDetailViewModel {
     }
 
     public String getCategory(){
-        return this.idea.getCategory();
+        return "#" + this.idea.getCategory();
+    }
+
+    public Category getCategoryOb(){
+        return new Category( this.idea.getCategory());
     }
 
     public RecyclerView getCommentList(){
@@ -118,4 +125,15 @@ public class IdeaDetailViewModel {
         return this.binding.send;
     }
 
+    public void selectAuthor(View view){
+        HomeActivity.startIntent(getContext(), getUser(), null, getAuthorEmail());
+    }
+
+    public void selectCategory(View view){
+        HomeActivity.startIntent(getContext(), getUser(), getCategoryOb(), null);
+    }
+
+    public void logout(View view){
+        Login.startIntent(getContext(), getUser());
+    }
 }

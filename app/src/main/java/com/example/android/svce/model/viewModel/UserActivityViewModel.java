@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.svce.activities.HomeActivity;
+import com.example.android.svce.activities.Login;
+import com.example.android.svce.activities.SearchActivity;
 import com.example.android.svce.model.POJO.User;
 
 /**
@@ -58,4 +60,14 @@ public class UserActivityViewModel {
         HomeActivity.startIntent(getContext(), getUser(), null, getUserEmail());
     }
 
+    public void searchCategory(View view){
+        SearchActivity.startIntent(getContext(), getUser());
+    }
+
+    public void openHomeActivity(View view){
+        HomeActivity.startIntent(getContext(), getUser(), null, null);
+    }
+    public void logout(View view){
+        Login.startIntent(getContext(), getUser());
+    }
 }
